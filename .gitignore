@@ -1,4 +1,3 @@
-# Maven derleme çıktısı
 target/
 *.class
 
@@ -18,3 +17,7 @@ bin/
 # OS
 .DS_Store
 Thumbs.db
+
+# NetBeans
+nbproject/private/
+nbactions.xml
