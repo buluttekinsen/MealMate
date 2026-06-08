@@ -60,4 +60,36 @@ class MemberTest {
         m.adjustBalance(-10.0);
         assertEquals(-10.0, m.getBalance(), 0.0001);
     }
+    
+    /** Verifies that two members with the same email are equal. */
+    @Test
+    void equals_trueForSameEmail() {
+        Member a = new Member("Bulut", "bulut@tue.nl");
+        Member b = new Member("Bulut T.", "bulut@tue.nl"); // same email, different name
+        assertEquals(a, b);
+    }
+
+    /** Verifies that members with different emails are not equal. */
+    @Test
+    void equals_falseForDifferentEmail() {
+        Member a = new Member("Bulut", "bulut@tue.nl");
+        Member b = new Member("Bulut", "bulut2@tue.nl");
+        assertNotEquals(a, b);
+    }
+
+    /** Verifies that a member is not equal to null or to an object of another type. */
+    @Test
+    void equals_falseForNullAndOtherType() {
+        Member a = new Member("Bulut", "bulut@tue.nl");
+        assertNotEquals(a, null);
+        assertNotEquals(a, "bulut@tue.nl");
+    }
+
+    /** Verifies that equal members have the same hash code. */
+    @Test
+    void hashCode_consistentWithEquals() {
+        Member a = new Member("Bulut", "bulut@tue.nl");
+        Member b = new Member("Bulut T.", "bulut@tue.nl");
+        assertEquals(a.hashCode(), b.hashCode());
+    }
 }

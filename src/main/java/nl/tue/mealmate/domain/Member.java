@@ -53,4 +53,33 @@ public class Member {
     public void adjustBalance(double delta) {
         this.balance += delta;
     }
+    
+    /**
+     * Indicates if this member is equal to another object. Two members are 
+     * equal if they have the same email, which uniquely identifies a member
+     * 
+     * @param obj the object to compare with
+     * @return true if obj is a member with the same email, false otherwise
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Member other)) {
+            return false;
+        }
+        return email.equals(other.email);
+    }
+    
+    /**
+     * Returns a hash code consistent with {@link #equals(Object)}, based on the
+     * member's email
+     * 
+     * @return this member's hash code
+     */
+    @Override
+    public int hashCode() {
+        return email.hashCode();
+    }
 }
